@@ -32,7 +32,7 @@ export default function App() {
   return (
     <div className="centered">
       <input
-        type="text"
+        type="number"
         value={amount}
         onChange={(e) => setAmount(Number(e.target.value))}
         disabled={isLoading}
