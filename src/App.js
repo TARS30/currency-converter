@@ -4,10 +4,10 @@ import "./App.css";
 // `https://api.frankfurter.app/latest?amount=100&from=EUR&to=USD`
 
 export default function App() {
-  const [amount, setAmount] = useState(1);
+  const [amount, setAmount] = useState('');
   const [toCur, setToCur] = useState("EUR");
   const [fromCur, setFromCurr] = useState("USD");
-  const [converted, setConverted] = useState("");
+  const [converted, setConverted] = useState("0");
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -62,7 +62,7 @@ export default function App() {
       </div>
       {!isLoading && (
         <p className="converted-value">
-          {converted} <span>{toCur}</span>
+         🤑 {converted} <span>{toCur}</span>
         </p>
       )}
       {isLoading && <p>Loading...</p>}

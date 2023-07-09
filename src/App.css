@@ -1,11 +1,15 @@
 .centered {
+  padding: 30px 20px;
+  background-color: rgba(66, 109, 76, 0.671);
   text-align: center;
-  min-width: 320px;
+  display: inline-block;
   margin: 100px auto;
+  border-radius: 20px;
   overflow: hidden; /* Hide scrollbars */
 }
 .centered input {
   width: 185px;
+  font-size: 20px;
   background-color: #ccc;
   text-align: center;
   padding: 10px;
