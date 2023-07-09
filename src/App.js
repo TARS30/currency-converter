@@ -4,7 +4,7 @@ import "./App.css";
 // `https://api.frankfurter.app/latest?amount=100&from=EUR&to=USD`
 
 export default function App() {
-  const [amount, setAmount] = useState("1");
+  const [amount, setAmount] = useState(1);
   const [toCur, setToCur] = useState("EUR");
   const [fromCur, setFromCurr] = useState("USD");
   const [converted, setConverted] = useState("");
@@ -12,8 +12,11 @@ export default function App() {
 
   useEffect(() => {
     async function convert() {
-      if (amount === 0) {
+      if (amount === "") {
         return;
+      }
+      if (amount === "0") {
+        return
       }
       if (fromCur === toCur) {
         return setConverted(amount);
@@ -34,7 +37,7 @@ export default function App() {
       <input
         type="number"
         value={amount}
-        onChange={(e) => setAmount(Number(e.target.value))}
+        onChange={(e) => setAmount(e.target.value)}
         disabled={isLoading}
         placeholder="Enter Amount"
       />
@@ -46,7 +49,6 @@ export default function App() {
           <option value="GBP">GBP</option>
           <option value="ILS">ILS</option>
           <option value="JPY">JPY</option>
-          
         </select>
         <p>👉</p>
         <select value={toCur} onChange={(e) => setToCur(e.target.value)}>
@@ -56,7 +58,6 @@ export default function App() {
           <option value="GBP">GBP</option>
           <option value="ILS">ILS</option>
           <option value="JPY">JPY</option>
-
         </select>
       </div>
       {!isLoading && (
