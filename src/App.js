@@ -1,11 +1,10 @@
-// import logo from "./logo.svg";
 import { useEffect, useState } from "react";
 import "./App.css";
 
 // `https://api.frankfurter.app/latest?amount=100&from=EUR&to=USD`
 
 export default function App() {
-  const [amount, setAmount] = useState('1');
+  const [amount, setAmount] = useState("1");
   const [toCur, setToCur] = useState("EUR");
   const [fromCur, setFromCurr] = useState("USD");
   const [converted, setConverted] = useState("");
@@ -14,10 +13,10 @@ export default function App() {
   useEffect(() => {
     async function convert() {
       if (amount === 0) {
-        return
+        return;
       }
       if (fromCur === toCur) {
-        return setConverted(amount)
+        return setConverted(amount);
       }
       setIsLoading(true);
       const res = await fetch(
@@ -63,26 +62,3 @@ export default function App() {
     </div>
   );
 }
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
