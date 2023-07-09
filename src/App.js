@@ -42,15 +42,21 @@ export default function App() {
         <select value={fromCur} onChange={(e) => setFromCurr(e.target.value)}>
           <option value="USD">USD</option>
           <option value="EUR">EUR</option>
-          <option value="CAD">CAD</option>
-          <option value="INR">INR</option>
+          <option value="CNY">CNY</option>
+          <option value="GBP">GBP</option>
+          <option value="ILS">ILS</option>
+          <option value="JPY">JPY</option>
+          
         </select>
         <p>👉</p>
         <select value={toCur} onChange={(e) => setToCur(e.target.value)}>
           <option value="USD">USD</option>
           <option value="EUR">EUR</option>
-          <option value="CAD">CAD</option>
-          <option value="INR">INR</option>
+          <option value="CNY">CNY</option>
+          <option value="GBP">GBP</option>
+          <option value="ILS">ILS</option>
+          <option value="JPY">JPY</option>
+
         </select>
       </div>
       {!isLoading && (
