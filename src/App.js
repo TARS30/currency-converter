@@ -1,46 +1,27 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useConvert } from "./useConvert";
+
 import "./App.css";
 
-// `https://api.frankfurter.app/latest?amount=100&from=EUR&to=USD`
-
 export default function App() {
-  const [amount, setAmount] = useState('');
+  const [amount, setAmount] = useState("");
   const [toCur, setToCur] = useState("EUR");
   const [fromCur, setFromCurr] = useState("USD");
   const [converted, setConverted] = useState("0");
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    async function convert() {
-      if (amount === "") {
-        return;
-      }
-      if (amount === "0") {
-        return
-      }
-      if (fromCur === toCur) {
-        return setConverted(amount);
-      }
-      setIsLoading(true);
-      const res = await fetch(
-        `https://api.frankfurter.app/latest?amount=${amount}&from=${fromCur}&to=${toCur}`
-      );
-      const data = await res.json();
-      setConverted(data.rates[toCur]);
-    }
-    convert();
-    setIsLoading(false);
-  }, [amount, fromCur, toCur]);
+  useConvert({ amount, fromCur, toCur, setConverted, setIsLoading });
 
   return (
     <div className="centered">
       <input
+        min="0"
         type="number"
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
-        disabled={isLoading}
         placeholder="Enter Amount"
       />
+
       <div className="selects">
         <select value={fromCur} onChange={(e) => setFromCurr(e.target.value)}>
           <option value="USD">USD</option>
@@ -51,7 +32,7 @@ export default function App() {
           <option value="ILS">ILS</option>
           <option value="JPY">JPY</option>
         </select>
-        <p>👉</p>
+        <p>To</p>
         <select value={toCur} onChange={(e) => setToCur(e.target.value)}>
           <option value="USD">USD</option>
           <option value="EUR">EUR</option>
@@ -64,7 +45,7 @@ export default function App() {
       </div>
       {!isLoading && (
         <p className="converted-value">
-         🤑 {converted} <span>{toCur}</span>
+          {converted} <span>{toCur}</span>
         </p>
       )}
       {isLoading && <p>Loading...</p>}

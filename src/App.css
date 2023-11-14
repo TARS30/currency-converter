@@ -1,10 +1,10 @@
 .centered {
   padding: 30px 20px;
-  background-color: rgba(66, 109, 76, 0.671);
+  background-color: #dfdfdf;
   text-align: center;
   display: inline-block;
   margin: 100px auto;
-  border-radius: 20px;
+  border-radius: 10px;
   overflow: hidden; /* Hide scrollbars */
 }
 .centered input {
@@ -13,11 +13,16 @@
   background-color: #ccc;
   text-align: center;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid rgb(121, 121, 121);
   outline: none;
+  transition: all 0.3s ease 0s;
+  border: none;
 }
-
+.centered input:focus {
+  scale: 1.1;
+  background-color: #fff;
+}
 .selects {
   margin-top: 20px;
   display: flex;
@@ -28,8 +33,15 @@
 
 .selects select {
   background-color: #ccc;
-  padding: 15px;
-  border-radius: 10px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: all 0.3s ease 0s;
+  border: none;
+}
+.selects select:focus {
+  scale: 1.1;
+  background-color: #fff;
+
 }
 .converted-value {
   font-size: 20px;
